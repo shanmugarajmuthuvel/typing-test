@@ -1,0 +1,59 @@
+<html>
+<body>
+<head>
+
+
+<style>
+
+.active{
+color:red;
+background-color:white;
+}
+
+</style>
+
+
+</head>  
+  <textarea id="text" placeholder="enteryour message"readonly></textarea>
+   <button id="button">START</button>
+   <button id="reset">RESET</button>
+   <h1 id="head" data-time="60" ></h1>
+   <label id="len"></label>
+   
+
+<script>
+    var Label=document.querySelector("label")
+	var label=document.querySelector("len")
+	var text=document.getElementById("text")
+	var button=document.getElementById("button")
+	var head=document.getElementById("head")
+	var reset=document.querySelector("#reset")
+	  button.addEventListener("click",cli)
+           	  function cli(){
+			  text.removeAttribute("readonly")
+                 text.addEventListener("input",sta)
+	                    function sta(){
+		           let texlength=text.value.length
+				      Label.innerHTML=texlength
+					  }      
+               var timer=head.dataset.time
+			     var counting=setInterval(()=>{
+			      if(timer>0){
+				    timer--
+					head.innerHTML=timer
+					if(timer===0){
+					   text.classList.add("active")
+					   text.value=""
+					}
+					}
+					},100)
+					}
+					  
+		    reset.addEventListener("click",()=>{
+			     text.classList.remove("active")
+				 })
+             				   
+</script>
+
+</body>
+</html>
